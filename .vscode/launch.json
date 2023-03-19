@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug: api",
+      "type": "node",
+      "request": "attach",
+      "restart": true,
+      "sourceMaps": true,
+      "port": 9229,
+      "address": "localhost",
+      "localRoot": "${workspaceFolder}",
+      "remoteRoot": "/app"
+    }
+  ]
+}
