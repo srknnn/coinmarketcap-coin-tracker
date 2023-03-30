@@ -23,5 +23,7 @@ import { CoinsService } from '../coins/coins.service';
 export class AppModule {
   constructor(private readonly cmcService: CmcService) {
     this.cmcService.runCronJob();
+    this.cmcService.createDailyData();
+    this.cmcService.calculateProgress();
   }
 }

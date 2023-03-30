@@ -4,7 +4,10 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install \
+  && mv node_modules /node_modules
+
+RUN npm install -g @nestjs/cli
 
 COPY . .
 
