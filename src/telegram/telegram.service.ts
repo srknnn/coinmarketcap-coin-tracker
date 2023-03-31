@@ -16,7 +16,9 @@ export class TelegramService {
 
   async sendTelegramMessage(data: any): Promise<void> {
     try {
-      const message = `Here's the data from Nest.js: ${JSON.stringify(data)}`;
+      const message = `Here's    the data from Nest.js: ${JSON.stringify(
+        data,
+      )}`;
       await this.bot.sendMessage({
         chat_id: process.env.TELEGRAM_CHANNELID,
         text: message,
