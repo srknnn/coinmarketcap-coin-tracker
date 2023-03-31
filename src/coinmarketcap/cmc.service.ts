@@ -3,7 +3,7 @@ import { Cron } from '@nestjs/schedule';
 import { CoinsService } from '../coins/coins.service';
 import axios from 'axios';
 import { Coin } from '../models/coin.schema';
-import * as moment from 'moment';
+import moment from 'moment';
 import * as _ from 'lodash';
 
 @Injectable()
@@ -31,7 +31,6 @@ export class CmcService {
       //
       // console.log('deneme', ressponseCreate);
     }
-    console.log(data);
   }
 
   async calculateProgress() {
@@ -51,8 +50,6 @@ export class CmcService {
       .orderBy('progress', 'desc')
       .slice(0, 10)
       .value();
-
-    console.log('progress', progress);
   }
 
   @Cron('* * * * *')
