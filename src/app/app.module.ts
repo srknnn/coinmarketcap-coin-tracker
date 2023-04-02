@@ -22,13 +22,9 @@ import { TelegramService } from '../telegram/telegram.service';
   providers: [AppService, CmcService, CoinsService, TelegramService],
 })
 export class AppModule {
-  constructor(
-    private readonly cmcService: CmcService,
-    private readonly telegramService: TelegramService,
-  ) {
-    this.cmcService.runCronJob();
+  constructor(private readonly cmcService: CmcService) {
     this.cmcService.createDailyData();
     this.cmcService.calculateProgress();
-    this.telegramService.sendTelegramMessage({ serkan: 12 });
+    this.cmcService.cleanOldData();
   }
 }

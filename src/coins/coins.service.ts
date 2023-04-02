@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { Moment } from 'moment';
 import { Model } from 'mongoose';
 import { Coin } from '../models/coin.schema';
 
@@ -14,6 +15,16 @@ export class CoinsService {
   async create(createCoinDto: Coin): Promise<Coin> {
     const createdCat = new this.coinModel(createCoinDto);
     return createdCat.save();
+  }
+
+  async deleteOldDatas(date: moment.Moment) {
+    this.coinModel
+      .deleteMany({
+        date_fetched: {
+          $lt: date,
+        },
+      })
+      .exec();
   }
 
   async getCoinsByDay(
