@@ -68,6 +68,7 @@ export class CmcService {
       '\n```';
 
     console.log(message);
+
     this.telegramService.sendTelegramMessage(message);
   }
 

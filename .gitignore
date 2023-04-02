@@ -2,7 +2,7 @@
 /dist
 /node_modules
 node_modules
-
+.env
 
 # OS
 .DS_Store
