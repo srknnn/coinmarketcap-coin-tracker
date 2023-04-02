@@ -47,6 +47,8 @@ export class CmcService {
   }
 
   async prepareTable(progress) {
+    if (progress.length <= 0) return;
+
     const headers = Object.keys(progress[0]);
     const colWidths = [7, 5, 5, 6];
     const table = new Table({ head: headers, colWidths });
@@ -66,7 +68,7 @@ export class CmcService {
       '```\n' +
       table.toString() +
       '\n```';
-
+    //
     console.log(message);
 
     this.telegramService.sendTelegramMessage(message);
