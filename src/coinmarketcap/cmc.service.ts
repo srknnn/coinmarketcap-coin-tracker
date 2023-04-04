@@ -68,7 +68,6 @@ export class CmcService {
       '```\n' +
       table.toString() +
       '\n```';
-    //
     console.log(message);
 
     this.telegramService.sendTelegramMessage(message);
@@ -84,9 +83,9 @@ export class CmcService {
     const progress = _.chain(coinsByDay)
       .groupBy('symbol')
       .map((coins, symbol) => {
-        const startRank = coins[0].rank;
-        const endRank = coins[coins.length - 1].rank;
-        const change = endRank - startRank;
+        const startRank = Math.floor(coins[0].rank);
+        const endRank = Math.floor(coins[coins.length - 1].rank);
+        const change = Math.floor(endRank - startRank);
         return {
           Coin: symbol,
           Başlangıç: endRank,
