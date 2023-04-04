@@ -28,7 +28,7 @@ export class CmcService {
     return response.data.data;
   }
 
-  @Cron('30 6 * * *')
+  @Cron('20 6 * * *')
   async createDailyData() {
     const data: Coin[] = await this.getCryptocurrencies();
     for (let i = 0; i < data.length - 1; i++) {
@@ -89,8 +89,8 @@ export class CmcService {
         const change = endRank - startRank;
         return {
           Coin: symbol,
-          Başlangıç: startRank,
-          Bitiş: endRank,
+          Başlangıç: endRank,
+          Bitiş: startRank,
           Aşama: change,
         };
       })
